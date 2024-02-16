@@ -10,6 +10,8 @@ pipeline {
           def nodejsInstallation = tool name: 'nodejs', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
           env.PATH = "${nodejsInstallation}/bin:${env.PATH}"
 
+          // Install yarn package
+          sh 'npm install -g yarn'
           // Install dependencies and build
           sh 'yarn install'
 
