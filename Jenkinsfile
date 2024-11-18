@@ -24,38 +24,38 @@ pipeline {
       }
     }
 
-stage('FTP Upload') {
-    steps {
-        script {
-            ftpPublisher(
-                alwaysPublishFromMaster: false,
-                continueOnError: true,
-                failOnError: true,
-                masterNodeName: '',
-                publishers: [
-                    [ 
-                        configName: 'ftpserver', 
-                        transfers: [
-                            [
-                                asciiMode: false,
-                                cleanRemote: true,
-                                excludes: '',
-                                flatten: false,
-                                makeEmptyDirs: false, 
-                                noDefaultExcludes: false, 
-                                patternSeparator: '[, ]+', 
-                                remoteDirectory: '/', 
-                                remoteDirectorySDF: false, 
-                                removePrefix: 'build', 
-                                sourceFiles: 'build/**'
-                            ]
-                        ]
-                    ] 
-                ]
-            )
-        }
-    }
-}
+// stage('FTP Upload') {
+//     steps {
+//         script {
+//             ftpPublisher(
+//                 alwaysPublishFromMaster: false,
+//                 continueOnError: true,
+//                 failOnError: true,
+//                 masterNodeName: '',
+//                 publishers: [
+//                     [ 
+//                         configName: 'ftpserver', 
+//                         transfers: [
+//                             [
+//                                 asciiMode: false,
+//                                 cleanRemote: true,
+//                                 excludes: '',
+//                                 flatten: false,
+//                                 makeEmptyDirs: false, 
+//                                 noDefaultExcludes: false, 
+//                                 patternSeparator: '[, ]+', 
+//                                 remoteDirectory: '/', 
+//                                 remoteDirectorySDF: false, 
+//                                 removePrefix: 'build', 
+//                                 sourceFiles: 'build/**'
+//                             ]
+//                         ]
+//                     ] 
+//                 ]
+//             )
+//         }
+//     }
+// }
 
 }
     }
