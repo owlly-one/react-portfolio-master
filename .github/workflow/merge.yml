@@ -1,4 +1,4 @@
-name: Trigger PM2 Server Restart on Merge to dev_a
+name: Trigger PM2 Server Restart on Merge to main
 
 on:
   push:
