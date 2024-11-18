@@ -1,0 +1,26 @@
+name: Trigger PM2 Server Restart on Merge to main
+
+on:
+  push:
+    branches:
+      - main  # Only triggers on pushes (including merges) to the dev_a branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository (optional if needed)
+        uses: actions/checkout@v3
+
+      - name: Set up SSH Agent
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Execute Remote Commands
+        run: 
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 
+            cd /root/react-portfolio-master &&
+            git pull origin main &&
+            pm2 restart all  # or pm2 restart <app_name> if you want to restart a specific app
+          
