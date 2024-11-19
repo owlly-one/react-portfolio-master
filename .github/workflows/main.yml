@@ -18,5 +18,5 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << EOF
           cd /root/react-portfolio-master
           git pull origin main
-          pm2 restart my-app  # Replace with specific process name or ID
+          pm2 restart my-app  
           EOF
